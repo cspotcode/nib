@@ -1,0 +1,17 @@
+Generate a deploy key for the repo.
+
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+Make a new deploy key for the github repo and paste the .pub into there.
+https://github.com/<username>/nib/settings/keys
+Enable write access for the deploy key.
+
+Encrypt the private ssh key for Travis.
+
+Gotta install the travis CLI and login if you haven't already.
+$ gem install travis
+$ travis login --org --user=<github username>
+
+$ travis encrypt-file <private key file> --add
+This will encrypt the private key file into a .enc file and add a line to .travis.yml that decrypts the file.
+
