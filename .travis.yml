@@ -1,7 +1,12 @@
 language: node_js
 node_js:
-  - 0.8
-  - 0.10
-
+  - "0.10"
+  - "0.8"
+env:
+  global:
+  - GH_REF: cspotcode/nib.git
 before_install:
   - npm install -g npm@~1.4.6
+  - openssl aes-256-cbc -K $encrypted_32dc99eaf549_key -iv $encrypted_32dc99eaf549_iv -in id_rsa.enc -out id_rsa -d
+after_success:
+  - bash travis-after-success.sh
