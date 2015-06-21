@@ -2,8 +2,8 @@
 set -e ; set -u
 
 echo "after-success script for branch: $TRAVIS_BRANCH"
-# Build and deploy documentation, but only for the master branch
-if [[ $TRAVIS_BRANCH == 'master' ]]
+# Build and deploy documentation, but only for the master branch and for the first job
+if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_JOB_NUMBER == '1' ]]
 then
   echo "Building and deploying website"
   SOURCE_DIR="$PWD"
